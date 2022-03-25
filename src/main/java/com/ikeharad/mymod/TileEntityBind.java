@@ -1,5 +1,7 @@
 package com.ikeharad.mymod;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -8,12 +10,18 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.Sys;
 
 import java.util.Random;
 
-public class TileEntityBind extends TileEntity implements ITickable {
+public class TileEntityBind extends TileEntity{
     String playerName;
     int damages=0;
+    boolean isExist=true;
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
@@ -29,18 +37,26 @@ public class TileEntityBind extends TileEntity implements ITickable {
         super.readFromNBT(compound);
     }
 
-    @Override
-    public void update() {
-
-        System.out.println(playerName);
+    @SubscribeEvent
+    public void onLivingHurt(LivingHurtEvent event){
+        System.out.println("Living Hurt!!");
+        System.out.println(this);
+        if(!isExist)
+            return;
         if (playerName == null)
             return;
-        EntityPlayer player = getWorld().getPlayerEntityByName(playerName);
+        Entity entity=event.getEntity();
+        EntityPlayer player=getWorld().getPlayerEntityByName(playerName);
         if (player == null)
             return;
-        if(player.isDead)
-            return;
-        damages+=(20.0f-player.getHealth());
-        player.setHealth(20.0f);
+        if(entity==player) {
+            damages+=event.getAmount();
+            System.out.println(damages);
+            event.setCanceled(true);
+        }
+    }
+
+    public TileEntityBind(){
+        MinecraftForge.EVENT_BUS.register(this);
     }
 }

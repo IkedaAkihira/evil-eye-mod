@@ -31,6 +31,7 @@ public class BlockBind extends Block implements ITileEntityProvider {
         this.setSoundType(SoundType.ANVIL);
         this.setHardness(1.0f);
         this.setHarvestLevel("pickaxe",4);
+        this.setLightLevel(10.0f);
     }
 
     @Nullable
@@ -55,6 +56,7 @@ public class BlockBind extends Block implements ITileEntityProvider {
         if(te.playerName==null)
             return;
         EntityPlayer player=worldIn.getPlayerEntityByName(te.playerName);
+        te.isExist=false;
         if(player==null)
             return;
         player.attackEntityFrom(DamageSource.MAGIC,te.damages);
