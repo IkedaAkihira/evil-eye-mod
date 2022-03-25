@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#i#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:obsidian"
+    },
+    "i": {
+      "item": "mymod:eye"
+    }
+  },
+  "result": {
+    "item": "mymod:eye_block"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mymod:items/eye"
+  },
+  "display": {
+    "thirdperson": {
+      "rotation": [
+        0,
+        90,
+        -35
+      ],
+      "translation": [
+        0,
+        1.25,
+        -3.5
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "firstperson": {
+      "rotation": [
+        0,
+        90,
+        -35
+      ],
+      "translation": [
+        0,
+        1.25,
+        -3.5
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

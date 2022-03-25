@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particles": "mymod:blocks/heart"
+    },
+    "model": "mymod:heart_block",
+    "uvlock": false
+  },
+  "variants": {
+    "normal": [{}],"inventory": [{}]
+  }
+}
