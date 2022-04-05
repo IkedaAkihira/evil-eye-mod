@@ -8,6 +8,23 @@
     "uvlock": false
   },
   "variants": {
-    "normal": [{}],"inventory": [{}]
+    "normal": {
+      "model": "mymod:eye_block"
+    },
+    "facing=north": {
+      "model": "mymod:eye_block"
+    },
+    "facing=east": {
+      "model": "mymod:eye_block",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mymod:eye_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mymod:eye_block",
+      "y": 270
+    }
   }
 }
