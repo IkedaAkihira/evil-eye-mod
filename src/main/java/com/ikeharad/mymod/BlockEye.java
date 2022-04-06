@@ -11,11 +11,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -31,15 +34,15 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
     //public static final PropertyDirection FACING=BlockHorizontal.FACING;
 
     public BlockEye(){
-        super(Material.CLAY, MapColor.BLACK);
+        super(Material.ROCK, MapColor.BLACK);
+        this.setDefaultState(this.getBlockState().getBaseState().withProperty(FACING,EnumFacing.NORTH));
         this.setRegistryName(MyMod.ID_MY_MOD,MyMod.NAME_EYE_BLOCK);
         this.setCreativeTab(MyMod.Tabs.MY_MOD);
         this.setUnlocalizedName("eye_block");
         this.setSoundType(SoundType.SLIME);
-        this.setHardness(5.0f);
+        this.setHardness(0.01f);
         this.setResistance(10.0f);
-        this.setHarvestLevel("pickaxe",1);
-        this.setDefaultState(this.getBlockState().getBaseState().withProperty(FACING,EnumFacing.NORTH));
+        this.setHarvestLevel("pickaxe",2);
 
         //this.setDefaultState(this.getBlockState().getBaseState().withProperty(FACING,EnumFacing.NORTH));
     }
@@ -49,11 +52,6 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return EYE;
-    }
-
-    @Override
-    public int quantityDropped(Random random) {
-        return random.nextInt(25)/10;
     }
 
     @Override
@@ -75,34 +73,48 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
 
     @Override
     public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
-        System.out.println(player.getName());
-        player.addPotionEffect(
-                new PotionEffect(
-                        MobEffects.WITHER,
-                        20*13,
-                        4,
-                        true,
-                        true
-                )
-        );
-        player.addPotionEffect(
-                new PotionEffect(
-                        MobEffects.HUNGER,
-                        20*13,
-                        169,
-                        true,
-                        true
-                )
-        );
-        player.addPotionEffect(
-                new PotionEffect(
-                        MobEffects.BLINDNESS,
-                        20*13,
-                        169,
-                        true,
-                        true
-                )
-        );
+        if (!willHarvest) {
+            if(world.isRemote) {
+                for (int i = 0; i < 130; i++)
+                    world.spawnParticle(
+                            EnumParticleTypes.ENCHANTMENT_TABLE,
+                            pos.getX() + world.rand.nextDouble() * 1.3 - 0.15,
+                            pos.getY() + world.rand.nextDouble() * 1.3,
+                            pos.getZ() + world.rand.nextDouble() * 1.3 - 0.15,
+                            0.0,
+                            0.0,
+                            0.0
+                    );
+            }else {
+                player.addPotionEffect(
+                        new PotionEffect(
+                                MobEffects.BLINDNESS,
+                                20 * 13,
+                                0,
+                                true,
+                                true
+                        )
+                );
+                player.addPotionEffect(
+                        new PotionEffect(
+                                MobEffects.GLOWING,
+                                20 * 13,
+                                0,
+                                true,
+                                true
+                        )
+                );
+                player.addPotionEffect(
+                        new PotionEffect(
+                                MobEffects.SLOWNESS,
+                                20 * 13,
+                                3,
+                                true,
+                                true
+                        )
+                );
+            }
+        }
         return super.removedByPlayer(state, world, pos, player, willHarvest);
     }
 

@@ -27,7 +27,7 @@ public class ItemBlockEye extends ItemBlock {
                     new PotionEffect(
                             MobEffects.BLINDNESS,
                             20 * 13,
-                            1,
+                            0,
                             true,
                             true
                     )
@@ -37,7 +37,17 @@ public class ItemBlockEye extends ItemBlock {
                     new PotionEffect(
                             MobEffects.GLOWING,
                             20 * 13,
-                            1,
+                            0,
+                            true,
+                            true
+                    )
+            );
+
+            player.addPotionEffect(
+                    new PotionEffect(
+                            MobEffects.SLOWNESS,
+                            20*13,
+                            3,
                             true,
                             true
                     )
