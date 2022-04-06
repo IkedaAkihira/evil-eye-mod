@@ -4,9 +4,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import org.lwjgl.Sys;
-
-import java.util.Iterator;
 
 public class ItemEye extends ItemFood {
     public ItemEye(){
