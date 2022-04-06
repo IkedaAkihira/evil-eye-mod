@@ -1,5 +1,6 @@
 package com.ikeharad.mymod;
 
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -93,6 +94,7 @@ public class MyMod {
         public static CreativeTabs MY_MOD=new CreativeTabs(getNextID(),LABEL_MY_MOD_TAB) {
             @Override
             @SideOnly(Side.CLIENT)
+            @MethodsReturnNonnullByDefault
             public ItemStack getTabIconItem() {
                 return new ItemStack(EYE);
             }
@@ -112,7 +114,7 @@ public class MyMod {
             EntityPlayer entityLiving=(EntityPlayer) event.getEntity();
             System.out.println(entityLiving);
             Iterable<ItemStack> armorList=entityLiving.getArmorInventoryList();
-            Iterator<ItemStack> iterator= armorList.iterator();;
+            Iterator<ItemStack> iterator= armorList.iterator();
             while(iterator.hasNext()){
                 ItemStack itemStack=iterator.next();
                 if(itemStack.getItem()== Items.GOLDEN_CHESTPLATE){
@@ -120,7 +122,7 @@ public class MyMod {
                     Entity entity=event.getSource().getTrueSource();
                     System.out.println(entity);
                     if(entity!=null){
-                        entity.getEntityWorld().createExplosion(entityLiving,entity.posX,entity.posY,entity.posZ,0.2f,true);
+                        entity.getEntityWorld().createExplosion(entityLiving,entity.posX,entity.posY,entity.posZ,2.5f,true);
                     }
 
                 }
