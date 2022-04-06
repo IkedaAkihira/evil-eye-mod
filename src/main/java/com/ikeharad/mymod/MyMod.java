@@ -63,7 +63,7 @@ public class MyMod {
         event.getRegistry().register(EYE);
         event.getRegistry().register(BOMB);
 
-        event.getRegistry().register(new ItemBlock(EYE_BLOCK).setRegistryName(ID_MY_MOD, NAME_EYE_BLOCK));
+        event.getRegistry().register(new ItemBlockEye(EYE_BLOCK).setRegistryName(ID_MY_MOD, NAME_EYE_BLOCK));
         GameRegistry.registerTileEntity(TileEntityEye.class, new ResourceLocation(ID_MY_MOD, NAME_EYE_BLOCK));
 
         GameRegistry.registerTileEntity(TileEntityBind.class, new ResourceLocation(ID_MY_MOD, NAME_BIND_BLOCK));
@@ -82,7 +82,6 @@ public class MyMod {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void registerModels(ModelRegistryEvent event){
-
         ModelLoader.setCustomModelResourceLocation(EYE,0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_EYE),"inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(EYE_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_EYE_BLOCK),"inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BIND_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_BIND_BLOCK),"inventory"));
