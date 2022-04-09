@@ -2,35 +2,33 @@ package com.ikeharad.mymod;
 
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
-import net.minecraft.client.particle.Particle;
+import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.Explosion;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.Sys;
-import scala.io.Source;
 
 import java.util.Iterator;
 
@@ -108,19 +106,19 @@ public class MyMod {
 
     @SubscribeEvent
     public void onEntityAttacked(LivingAttackEvent event){
-        System.out.println("faze 1");
+        //System.out.println("faze 1");
         if(event.getEntity() instanceof EntityPlayer){
-            System.out.println("faze 2");
+            //System.out.println("faze 2");
             EntityPlayer entityLiving=(EntityPlayer) event.getEntity();
-            System.out.println(entityLiving);
+            //System.out.println(entityLiving);
             Iterable<ItemStack> armorList=entityLiving.getArmorInventoryList();
             Iterator<ItemStack> iterator= armorList.iterator();
             while(iterator.hasNext()){
                 ItemStack itemStack=iterator.next();
                 if(itemStack.getItem()== Items.GOLDEN_CHESTPLATE){
-                    System.out.println("faze 3");
+                    //System.out.println("faze 3");
                     Entity entity=event.getSource().getTrueSource();
-                    System.out.println(entity);
+                    //System.out.println(entity);
                     if(entity!=null){
                         entity.getEntityWorld().createExplosion(entityLiving,entity.posX,entity.posY,entity.posZ,2.5f,true);
                     }
@@ -130,4 +128,18 @@ public class MyMod {
         }
     }
 
+    @SideOnly(Side.CLIENT)
+    public void render(){
+        RenderingRegistry.registerEntityRenderingHandler(EntityEyeApostle.class, new IRenderFactory<EntityEyeApostle>(){
+            @Override
+            public Render<? super EntityEyeApostle> createRenderFor(RenderManager manager){
+                return new RenderEyeApostle(manager,new ModelZombie(),0.5f);
+            }
+        });
+    }
+
+    @Mod.EventHandler
+    public void init(FMLPreInitializationEvent event){
+        EntityRegistry.registerModEntity(new ResourceLocation(ID_MY_MOD,"eye_apostle"),EntityEyeApostle.class,"eye_apostle",0,this,200,1,true);
+    }
 }
