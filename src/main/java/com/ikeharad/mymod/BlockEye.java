@@ -47,7 +47,24 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
         //this.setDefaultState(this.getBlockState().getBaseState().withProperty(FACING,EnumFacing.NORTH));
     }
 
+    @Override
+    public int quantityDroppedWithBonus(int fortune, Random random) {
+        if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped((IBlockState)this.getBlockState().getValidStates().iterator().next(), random, fortune))
+        {
+            int i = random.nextInt(fortune + 2) - 1;
 
+            if (i < 0)
+            {
+                i = 0;
+            }
+
+            return this.quantityDropped(random) * (i + 1);
+        }
+        else
+        {
+            return this.quantityDropped(random);
+        }
+    }
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
@@ -71,7 +88,7 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
         super.breakBlock(world,blockPos,state);
     }
 
-    @Override
+    /*@Override
     public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
         if (!willHarvest) {
             if(world.isRemote) {
@@ -116,7 +133,7 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
             }
         }
         return super.removedByPlayer(state, world, pos, player, willHarvest);
-    }
+    }*/
 
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot) {
