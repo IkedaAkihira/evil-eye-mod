@@ -133,13 +133,14 @@ public class MyMod {
         RenderingRegistry.registerEntityRenderingHandler(EntityEyeApostle.class, new IRenderFactory<EntityEyeApostle>(){
             @Override
             public Render<? super EntityEyeApostle> createRenderFor(RenderManager manager){
-                return new RenderEyeApostle(manager,new ModelZombie(),0.5f);
+                return new RenderEyeApostle(manager);
             }
         });
     }
 
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event){
+        render();
         EntityRegistry.registerModEntity(new ResourceLocation(ID_MY_MOD,"eye_apostle"),EntityEyeApostle.class,"eye_apostle",0,this,200,1,true);
     }
 }
