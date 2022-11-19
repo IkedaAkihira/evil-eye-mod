@@ -1,7 +1,6 @@
 package com.ikeharad.mymod;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -11,7 +10,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 @SideOnly(Side.CLIENT)
 public class RenderEyeApostle extends RenderBiped<EntityEyeApostle>
 {
-    private static final ResourceLocation ZOMBIE_TEXTURES = new ResourceLocation("textures/entity/zombie/zombie.png");
+    private static final ResourceLocation ZOMBIE_TEXTURES = new ResourceLocation("mymod","textures/entity/eye.png");
 
     public RenderEyeApostle(RenderManager renderManagerIn)
     {
@@ -27,7 +26,7 @@ public class RenderEyeApostle extends RenderBiped<EntityEyeApostle>
         this.addLayer(layerbipedarmor);
     }
 
-    protected ResourceLocation getEntityTexture(EntityZombie entity)
+    protected ResourceLocation getEntityTexture(EntityEyeApostle entity)
     {
         return ZOMBIE_TEXTURES;
     }
