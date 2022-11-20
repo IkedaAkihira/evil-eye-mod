@@ -16,11 +16,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeBeach;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.BiomeManager.BiomeEntry;
+import net.minecraftforge.common.BiomeManager.BiomeType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
@@ -31,10 +36,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Iterator;
+
+import com.ikeharad.mymod.worldgen.BiomeEvilEye;
+import com.ikeharad.mymod.worldgen.ModBiomes;
 
 import static net.minecraft.creativetab.CreativeTabs.getNextID;
 
@@ -48,13 +57,15 @@ public class MyMod {
     NAME_HEART_BLOCK="heart_block",
     NAME_NOT_HUMAN_ACHIEVEMENT="not_human_achievement",
     LABEL_MY_MOD_TAB="evil_eye_mod_tab",
-    NAME_BOMB="bomb";
+    NAME_BOMB="bomb",
+    NAME_EYE_BIOME="evil_eye_biome";
 
     public static final Item EYE= new ItemEye();
     public static final Block EYE_BLOCK=new BlockEye();
     public static final Block BIND_BLOCK=new BlockBind();
     public static final Block HEART_BLOCK=new BlockHeart();
     public static final Item BOMB=new ItemBomb();
+    //public static final Biome BIOME_EVIL_EYE = new BiomeEvilEye().setRegistryName(MyMod.ID_MY_MOD,MyMod.NAME_EYE_BIOME);
 
     @Mod.EventHandler
     public void construct(FMLConstructionEvent event){
@@ -146,8 +157,7 @@ public class MyMod {
     public void init(FMLPreInitializationEvent event){
         render();
         EntityRegistry.registerModEntity(new ResourceLocation(ID_MY_MOD,"eye_apostle"),EntityEyeApostle.class,"eye_apostle",0,this,200,1,true);
-        Biomes.FOREST.getSpawnableList(EnumCreatureType.AMBIENT).add(
-            new SpawnListEntry(EntityEyeApostle.class,1000,2,5)
-            );
+        ModBiomes.initBiomeManagerAndDictionary();
+        
     }
 }
