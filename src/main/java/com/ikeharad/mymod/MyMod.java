@@ -39,15 +39,15 @@ import java.util.Iterator;
 import static net.minecraft.creativetab.CreativeTabs.getNextID;
 
 
-@Mod(modid="mymod",version="1.0",name="MyMod")
+@Mod(modid="evil_eye_mod",version="1.0",name="EvilEyeMod")
 public class MyMod {
-    public static final String ID_MY_MOD="mymod",
-    NAME_EYE="eye",
-    NAME_EYE_BLOCK="eye_block",
+    public static final String ID_MY_MOD="evil_eye_mod",
+    NAME_EYE="evil_eye",
+    NAME_EYE_BLOCK="evil_eye_block",
     NAME_BIND_BLOCK="bind_block",
     NAME_HEART_BLOCK="heart_block",
     NAME_NOT_HUMAN_ACHIEVEMENT="not_human_achievement",
-    LABEL_MY_MOD_TAB="mymod_tab",
+    LABEL_MY_MOD_TAB="evil_eye_mod_tab",
     NAME_BOMB="bomb";
 
     public static final Item EYE= new ItemEye();

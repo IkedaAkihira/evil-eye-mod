@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mymod:blocks/bind_block"
+    "all": "evil_eye_mod:blocks/bind_block"
   }
 }

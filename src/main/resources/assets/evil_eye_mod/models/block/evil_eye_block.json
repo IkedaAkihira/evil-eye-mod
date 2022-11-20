@@ -2,9 +2,9 @@
 	"parent": "block/cube_all",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "mymod:blocks/hitomi",
-		"3": "mymod:blocks/black",
-		"particle": "mymod:blocks/hitomi"
+		"0": "evil_eye_mod:blocks/hitomi",
+		"3": "evil_eye_mod:blocks/black",
+		"particle": "evil_eye_mod:blocks/hitomi"
 	},
 	"elements": [
 		{

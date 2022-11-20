@@ -2,9 +2,9 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "particles": "mymod:blocks/bind_block"
+      "particles": "evil_eye_mod:blocks/heart"
     },
-    "model": "mymod:bind_block",
+    "model": "evil_eye_mod:heart_block",
     "uvlock": false
   },
   "variants": {
