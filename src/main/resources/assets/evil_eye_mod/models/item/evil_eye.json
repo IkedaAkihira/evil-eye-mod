@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mymod:items/eye"
+    "layer0": "evil_eye_mod:items/eye"
   },
   "display": {
     "thirdperson": {

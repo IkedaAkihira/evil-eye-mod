@@ -38,7 +38,7 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
         this.setDefaultState(this.getBlockState().getBaseState().withProperty(FACING,EnumFacing.NORTH));
         this.setRegistryName(MyMod.ID_MY_MOD,MyMod.NAME_EYE_BLOCK);
         this.setCreativeTab(MyMod.Tabs.MY_MOD);
-        this.setUnlocalizedName("eye_block");
+        this.setUnlocalizedName(MyMod.NAME_EYE_BLOCK);
         this.setSoundType(SoundType.SLIME);
         this.setHardness(0.01f);
         this.setResistance(10.0f);

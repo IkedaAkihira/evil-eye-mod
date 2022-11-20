@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 @SideOnly(Side.CLIENT)
 public class RenderEyeApostle extends RenderBiped<EntityEyeApostle>
 {
-    private static final ResourceLocation ZOMBIE_TEXTURES = new ResourceLocation("mymod","textures/entity/eye.png");
+    private static final ResourceLocation ZOMBIE_TEXTURES = new ResourceLocation(MyMod.ID_MY_MOD,"textures/entity/eye.png");
 
     public RenderEyeApostle(RenderManager renderManagerIn)
     {

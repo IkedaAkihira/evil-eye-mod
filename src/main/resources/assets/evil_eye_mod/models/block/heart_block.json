@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "north": "evil_eye_mod:blocks/heart",
+    "south": "evil_eye_mod:blocks/heart",
+    "west": "evil_eye_mod:blocks/heart",
+    "east": "evil_eye_mod:blocks/heart",
+    "up": "evil_eye_mod:blocks/heart_top",
+    "down": "evil_eye_mod:blocks/heart_top"
+  }
+}

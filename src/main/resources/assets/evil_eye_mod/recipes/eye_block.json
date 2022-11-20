@@ -10,10 +10,10 @@
       "item": "minecraft:obsidian"
     },
     "i": {
-      "item": "mymod:eye"
+      "item": "evil_eye_mod:evil_eye"
     }
   },
   "result": {
-    "item": "mymod:eye_block"
+    "item": "evil_eye_mod:eye_block"
   }
 }
