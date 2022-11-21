@@ -39,8 +39,8 @@ public class TileEntityBind extends TileEntity{
 
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event){
-        System.out.println("Living Hurt!!");
-        System.out.println(this);
+        //System.out.println("Living Hurt!!");
+        //System.out.println(this);
         if(!isExist)
             return;
         if (playerName == null)
@@ -52,6 +52,9 @@ public class TileEntityBind extends TileEntity{
         if(entity==player) {
             damages+=event.getAmount();
             System.out.println(damages);
+            if(damages>=300){
+                world.createExplosion(null, pos.getX(), pos.getY(),pos.getZ(),1.0f,true);
+            }
             event.setCanceled(true);
         }
     }

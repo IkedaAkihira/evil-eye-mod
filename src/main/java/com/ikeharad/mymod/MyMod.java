@@ -2,9 +2,11 @@ package com.ikeharad.mymod;
 
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -43,14 +45,18 @@ public class MyMod {
     NAME_BIND_BLOCK="bind_block",
     NAME_HEART_BLOCK="heart_block",
     NAME_NOT_HUMAN_ACHIEVEMENT="not_human_achievement",
+    NAME_EYE_APOSTLE="eye_apostle",
     LABEL_MY_MOD_TAB="mymod_tab",
-    NAME_BOMB="bomb";
+    NAME_BOMB="bomb",
+    NAME_EYE_INCUBATOR="eye_incubator";
 
     public static final Item EYE= new ItemEye();
     public static final Block EYE_BLOCK=new BlockEye();
     public static final Block BIND_BLOCK=new BlockBind();
     public static final Block HEART_BLOCK=new BlockHeart();
     public static final Item BOMB=new ItemBomb();
+    public static final Block BLACK_BLOCK=new BlockBlack();
+    public static final Block EYE_INCUBATOR_BLOCK=new BlockEyeIncubator();
 
     @Mod.EventHandler
     public void construct(FMLConstructionEvent event){
@@ -69,6 +75,10 @@ public class MyMod {
         event.getRegistry().register(new ItemBlock(BIND_BLOCK).setRegistryName(ID_MY_MOD, NAME_BIND_BLOCK));
 
         event.getRegistry().register(new ItemBlock(HEART_BLOCK).setRegistryName(ID_MY_MOD, NAME_HEART_BLOCK));
+
+        event.getRegistry().register(new ItemBlock(BLACK_BLOCK).setRegistryName(ID_MY_MOD,"black_block"));
+        event.getRegistry().register(new ItemBlock(EYE_INCUBATOR_BLOCK).setRegistryName(ID_MY_MOD,NAME_EYE_INCUBATOR));
+        GameRegistry.registerTileEntity(TileEntityEyeIncubator.class, new ResourceLocation(ID_MY_MOD, NAME_EYE_INCUBATOR));
     }
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event){
@@ -76,6 +86,8 @@ public class MyMod {
         event.getRegistry().register(EYE_BLOCK);
         event.getRegistry().register(BIND_BLOCK);
         event.getRegistry().register(HEART_BLOCK);
+        event.getRegistry().register(BLACK_BLOCK);
+        event.getRegistry().register(EYE_INCUBATOR_BLOCK);
     }
 
     @SubscribeEvent
@@ -85,6 +97,8 @@ public class MyMod {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(EYE_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_EYE_BLOCK),"inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BIND_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_BIND_BLOCK),"inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(HEART_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_HEART_BLOCK),"inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BLACK_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,"black_block"),"inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(EYE_INCUBATOR_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_EYE_INCUBATOR),"inventory"));
     }
 
 
@@ -133,13 +147,14 @@ public class MyMod {
         RenderingRegistry.registerEntityRenderingHandler(EntityEyeApostle.class, new IRenderFactory<EntityEyeApostle>(){
             @Override
             public Render<? super EntityEyeApostle> createRenderFor(RenderManager manager){
-                return new RenderEyeApostle(manager,new ModelZombie(),0.5f);
+                return new RenderBiped<EntityEyeApostle>(manager,new ModelBiped(),0.5f);
             }
         });
     }
 
     @Mod.EventHandler
     public void init(FMLPreInitializationEvent event){
-        EntityRegistry.registerModEntity(new ResourceLocation(ID_MY_MOD,"eye_apostle"),EntityEyeApostle.class,"eye_apostle",0,this,200,1,true);
+        EntityRegistry.registerModEntity(new ResourceLocation(ID_MY_MOD,NAME_EYE_APOSTLE),EntityEyeApostle.class,NAME_EYE_APOSTLE,0,this,200,1,true);
     }
+
 }

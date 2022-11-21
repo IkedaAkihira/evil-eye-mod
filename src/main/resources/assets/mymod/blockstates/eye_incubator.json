@@ -1,0 +1,40 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particles": "mymod:blocks/eye_incubator"
+    },
+    "model": "mymod:eye_incubator_8",
+    "uvlock": false
+  },
+  "variants": {
+    "normal": [{}],"inventory": [{}],
+    "eye_count=zero": {
+      "model": "mymod:eye_incubator_0"
+    },
+    "eye_count=one": {
+    "model": "mymod:eye_incubator_1"
+    },
+    "eye_count=two": {
+      "model": "mymod:eye_incubator_2"
+    },
+    "eye_count=three": {
+      "model": "mymod:eye_incubator_3"
+    },
+    "eye_count=four": {
+      "model": "mymod:eye_incubator_4"
+    },
+    "eye_count=five": {
+      "model": "mymod:eye_incubator_5"
+    },
+    "eye_count=six": {
+      "model": "mymod:eye_incubator_6"
+    },
+    "eye_count=seven": {
+      "model": "mymod:eye_incubator_7"
+    },
+    "eye_count=eight": {
+      "model": "mymod:eye_incubator_8"
+    }
+  }
+}

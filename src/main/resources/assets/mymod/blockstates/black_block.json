@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particles": "mymod:blocks/black_block"
+    },
+    "model": "mymod:black_block",
+    "uvlock": false
+  },
+  "variants": {
+    "normal": [{}],"inventory": [{}]
+  }
+}

@@ -1,5 +1,6 @@
 package com.ikeharad.mymod;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackMelee;
@@ -8,6 +9,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -40,5 +42,11 @@ public class EntityEyeApostle extends EntityMob {
     @Override
     public EnumCreatureAttribute getCreatureAttribute() {
         return EnumCreatureAttribute.UNDEFINED;
+    }
+
+    @Override
+    public void onDeath(DamageSource cause) {
+        this.dropItem(MyMod.EYE,1);
+        super.onDeath(cause);
     }
 }

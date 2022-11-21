@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nullable;
 
 public class RenderEyeApostle extends RenderBiped<EntityEyeApostle> {
-    private static final ResourceLocation TEXTURE=new ResourceLocation("mymod:textures/entities/eye_apostle/eye_apostle.png");
+    private static final ResourceLocation TEXTURE=new ResourceLocation(MyMod.ID_MY_MOD,MyMod.NAME_EYE_APOSTLE);
     public RenderEyeApostle(RenderManager renderManagerIn, ModelBiped modelBipedIn, float shadowSize) {
         super(renderManagerIn, modelBipedIn, shadowSize);
     }

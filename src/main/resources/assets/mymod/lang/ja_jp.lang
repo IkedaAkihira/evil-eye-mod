@@ -2,3 +2,6 @@ item.eye.name=邪悪な眼
 tile.eye_block.name=邪眼ブロック
 itemGroup.mymod_tab=邪眼MOD
 tile.bind_block.name=束縛ブロック
+death.attack.price=%sは『代償』を支払った。
+death.attack.price_over=%sは束縛ブロックを過信しすぎた。
+death.attack.evil_eye_parasitize=%sは邪眼に憑かれて死んだ。

@@ -2,12 +2,15 @@ package com.ikeharad.mymod;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class ItemBlockEye extends ItemBlock {
@@ -26,52 +29,21 @@ public class ItemBlockEye extends ItemBlock {
             player.addPotionEffect(
                     new PotionEffect(
                             MobEffects.BLINDNESS,
-                            20 * 13,
+                            20 * 2,
                             0,
                             true,
                             true
                     )
             );
-
-            player.addPotionEffect(
+            /*player.addPotionEffect(
                     new PotionEffect(
-                            MobEffects.GLOWING,
-                            20 * 13,
+                            MobEffects.WITHER,
+                            20 * 2,
                             0,
                             true,
                             true
                     )
-            );
-
-            player.addPotionEffect(
-                    new PotionEffect(
-                            MobEffects.SLOWNESS,
-                            20*13,
-                            3,
-                            true,
-                            true
-                    )
-            );
-
-            player.addPotionEffect(
-                    new PotionEffect(
-                            MobEffects.HEALTH_BOOST,
-                            20 * 13,
-                            3,
-                            true,
-                            true
-                    )
-            );
-
-            player.addPotionEffect(
-                    new PotionEffect(
-                            MobEffects.STRENGTH,
-                            20 * 13,
-                            2,
-                            true,
-                            true
-                    )
-            );
+            );*/
         }
         super.onArmorTick(world, player, itemStack);
     }

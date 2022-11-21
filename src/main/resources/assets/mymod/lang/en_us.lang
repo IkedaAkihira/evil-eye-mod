@@ -2,3 +2,6 @@ item.eye.name=Evil Eye
 tile.eye_block.name=Evil Eye Block
 itemGroup.mymod_tab=Evil Eye MOD
 tile.bind_block.name=Bind Block
+death.attack.price=%s was paid "price".
+death.attack.price_over=%s put too much confidence in the bind block.
+death.attack.evil_eye_parasitize=%s was parasitized by evil eye.

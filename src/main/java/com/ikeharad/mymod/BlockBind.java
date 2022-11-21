@@ -59,7 +59,7 @@ public class BlockBind extends Block implements ITileEntityProvider {
         te.isExist=false;
         if(player==null)
             return;
-        player.attackEntityFrom(DamageSource.MAGIC,te.damages);
+        player.attackEntityFrom(new DamageSource((te.damages>=300)?"price_over":"price"),te.damages);
         super.breakBlock(worldIn, pos, state);
     }
 }
