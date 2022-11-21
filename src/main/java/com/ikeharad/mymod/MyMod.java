@@ -58,13 +58,15 @@ public class MyMod {
     NAME_NOT_HUMAN_ACHIEVEMENT="not_human_achievement",
     LABEL_MY_MOD_TAB="evil_eye_mod_tab",
     NAME_BOMB="bomb",
-    NAME_EYE_BIOME="evil_eye_biome";
+    NAME_EYE_BIOME="evil_eye_biome",
+    NAME_EVIL_SAND_BLOCK="evil_sand_block";
 
     public static final Item EYE= new ItemEye();
     public static final Block EYE_BLOCK=new BlockEye();
     public static final Block BIND_BLOCK=new BlockBind();
     public static final Block HEART_BLOCK=new BlockHeart();
     public static final Item BOMB=new ItemBomb();
+    public static final Block EVIL_SAND_BLOCK =new BlockEvilSand();
     //public static final Biome BIOME_EVIL_EYE = new BiomeEvilEye().setRegistryName(MyMod.ID_MY_MOD,MyMod.NAME_EYE_BIOME);
 
     @Mod.EventHandler
@@ -80,17 +82,21 @@ public class MyMod {
         event.getRegistry().register(new ItemBlockEye(EYE_BLOCK).setRegistryName(ID_MY_MOD, NAME_EYE_BLOCK));
         GameRegistry.registerTileEntity(TileEntityEye.class, new ResourceLocation(ID_MY_MOD, NAME_EYE_BLOCK));
 
+        /*
         GameRegistry.registerTileEntity(TileEntityBind.class, new ResourceLocation(ID_MY_MOD, NAME_BIND_BLOCK));
         event.getRegistry().register(new ItemBlock(BIND_BLOCK).setRegistryName(ID_MY_MOD, NAME_BIND_BLOCK));
 
         event.getRegistry().register(new ItemBlock(HEART_BLOCK).setRegistryName(ID_MY_MOD, NAME_HEART_BLOCK));
+        */
+        event.getRegistry().register(new ItemBlock(EVIL_SAND_BLOCK).setRegistryName(ID_MY_MOD,NAME_EVIL_SAND_BLOCK));
     }
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event){
 
         event.getRegistry().register(EYE_BLOCK);
-        event.getRegistry().register(BIND_BLOCK);
-        event.getRegistry().register(HEART_BLOCK);
+        event.getRegistry().register(EVIL_SAND_BLOCK);
+        //event.getRegistry().register(BIND_BLOCK);
+        //event.getRegistry().register(HEART_BLOCK);
     }
 
     @SubscribeEvent
@@ -98,8 +104,9 @@ public class MyMod {
     public void registerModels(ModelRegistryEvent event){
         ModelLoader.setCustomModelResourceLocation(EYE,0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_EYE),"inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(EYE_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_EYE_BLOCK),"inventory"));
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BIND_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_BIND_BLOCK),"inventory"));
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(HEART_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_HEART_BLOCK),"inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(EVIL_SAND_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_EVIL_SAND_BLOCK),"inventory"));
+        //ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BIND_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_BIND_BLOCK),"inventory"));
+        //ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(HEART_BLOCK),0,new ModelResourceLocation(new ResourceLocation(ID_MY_MOD,NAME_HEART_BLOCK),"inventory"));
     }
 
 

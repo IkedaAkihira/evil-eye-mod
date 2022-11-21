@@ -18,8 +18,8 @@ public class BiomeEvilEye extends Biome{
             .setTemperature(0.3f)
             );
         setRegistryName(MyMod.ID_MY_MOD,MyMod.NAME_EYE_BIOME);
-        topBlock = MyMod.HEART_BLOCK.getDefaultState();
-        fillerBlock = Blocks.GOLD_BLOCK.getDefaultState();
+        topBlock = MyMod.EVIL_SAND_BLOCK.getDefaultState();
+        fillerBlock = MyMod.EVIL_SAND_BLOCK.getDefaultState();
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
