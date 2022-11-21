@@ -2,12 +2,10 @@ package com.ikeharad.mymod.worldgen;
 
 import com.ikeharad.mymod.EntityEyeApostle;
 import com.ikeharad.mymod.MyMod;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraft.world.biome.BiomeEndDecorator;
+import net.minecraft.world.biome.BiomeHell;
 import net.minecraft.world.biome.BiomeHellDecorator;
-import net.minecraft.world.biome.BiomeVoidDecorator;
 
 public class BiomeEvilEye extends Biome{
 
@@ -16,6 +14,7 @@ public class BiomeEvilEye extends Biome{
             .setBaseHeight(1.0f)
             .setHeightVariation(0.5f)
             .setTemperature(0.3f)
+            .setWaterColor(0)
             );
         setRegistryName(MyMod.ID_MY_MOD,MyMod.NAME_EYE_BIOME);
         topBlock = MyMod.EVIL_SAND_BLOCK.getDefaultState();
@@ -27,7 +26,7 @@ public class BiomeEvilEye extends Biome{
         spawnableMonsterList.add(new SpawnListEntry(
             EntityEyeApostle.class, 
             100, 
-            2, 
+            4, 
             5
             )
         );
