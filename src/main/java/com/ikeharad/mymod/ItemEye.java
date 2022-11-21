@@ -17,7 +17,7 @@ public class ItemEye extends ItemFood {
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         //player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION,10,5));
-
+        player.changeDimension(MyMod.DIM_ID_EVIL_EYE,new CustomTeleporter());
 
         worldIn.createExplosion(null, player.posX, player.posY-1, player.posZ, 4.5f, true);
         worldIn.createExplosion(null, player.posX, player.posY-1, player.posZ, 4.5f, true);

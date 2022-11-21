@@ -16,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeBeach;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
@@ -23,6 +24,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.common.BiomeManager.BiomeType;
@@ -44,6 +46,7 @@ import java.util.Iterator;
 
 import com.ikeharad.mymod.worldgen.BiomeEvilEye;
 import com.ikeharad.mymod.worldgen.ModBiomes;
+import com.ikeharad.mymod.worldgen.WorldProviderEvilEye;
 
 import static net.minecraft.creativetab.CreativeTabs.getNextID;
 
@@ -59,7 +62,11 @@ public class MyMod {
     LABEL_MY_MOD_TAB="evil_eye_mod_tab",
     NAME_BOMB="bomb",
     NAME_EYE_BIOME="evil_eye_biome",
-    NAME_EVIL_SAND_BLOCK="evil_sand_block";
+    NAME_EVIL_SAND_BLOCK="evil_sand_block",
+    NAME_EVIL_EYE_DIMENSION="evil_eye_dimension";
+
+    public static int DIM_ID_EVIL_EYE = findFreeDimensionId(0);
+    public static DimensionType DIM_TYPE_EVIL_EYE = DimensionType.register(NAME_EVIL_EYE_DIMENSION, "_"+NAME_EVIL_EYE_DIMENSION, DIM_ID_EVIL_EYE, WorldProviderEvilEye.class, true);
 
     public static final Item EYE= new ItemEye();
     public static final Block EYE_BLOCK=new BlockEye();
@@ -165,6 +172,10 @@ public class MyMod {
         render();
         EntityRegistry.registerModEntity(new ResourceLocation(ID_MY_MOD,"eye_apostle"),EntityEyeApostle.class,"eye_apostle",0,this,200,1,true);
         ModBiomes.initBiomeManagerAndDictionary();
-        
+        DimensionManager.registerDimension(DIM_ID_EVIL_EYE, DIM_TYPE_EVIL_EYE);
+    }
+
+    private static int findFreeDimensionId(int x){
+        return (DimensionManager.isDimensionRegistered(x))?findFreeDimensionId(x+1):x;
     }
 }
