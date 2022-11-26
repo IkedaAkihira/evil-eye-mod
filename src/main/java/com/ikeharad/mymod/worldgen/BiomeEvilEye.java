@@ -11,7 +11,7 @@ public class BiomeEvilEye extends Biome{
 
     public BiomeEvilEye() {
         super(new BiomeProperties(MyMod.NAME_EYE_BIOME)
-            .setBaseHeight(1.0f)
+            .setBaseHeight(0.0f)
             .setHeightVariation(0.5f)
             .setTemperature(0.3f)
             .setWaterColor(0)
