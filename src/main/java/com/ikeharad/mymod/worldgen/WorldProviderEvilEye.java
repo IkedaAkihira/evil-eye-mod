@@ -1,6 +1,8 @@
 package com.ikeharad.mymod.worldgen;
 
+import net.minecraft.block.BlockWeb;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
@@ -12,13 +14,20 @@ public class WorldProviderEvilEye extends WorldProvider{
 
     @Override
     protected void init() {
-        this.biomeProvider = new BiomeProviderSingle(ModBiomes.evil_eye_biome);
+        super.init();
         this.doesWaterVaporize = false;
+        this.hasSkyLight = true;
+        this.biomeProvider = new BiomeProviderSingle(ModBiomes.evil_eye_biome);
     }
 
     @Override
     public DimensionType getDimensionType() {
         return MyMod.DIM_TYPE_EVIL_EYE;
+    }
+
+    @Override
+    public Vec3d getFogColor(float p_76562_1_, float p_76562_2_) {
+        return new Vec3d(0.5,0.7,0.7);
     }
 
     @Override
@@ -53,5 +62,11 @@ public class WorldProviderEvilEye extends WorldProvider{
     @Override
     public boolean canCoordinateBeSpawn(int x, int z) {
         return false;
+    }
+
+    @Override
+    public float calculateCelestialAngle(long worldTime, float partialTicks)
+    {
+        return 0.225F;
     }
 }
