@@ -24,6 +24,7 @@ public class RenderEyeApostle extends RenderBiped<EntityEyeApostle>
             }
         };
         this.addLayer(layerbipedarmor);
+        this.addLayer(new LayerEyeApostle(this));
     }
 
     protected ResourceLocation getEntityTexture(EntityEyeApostle entity)
