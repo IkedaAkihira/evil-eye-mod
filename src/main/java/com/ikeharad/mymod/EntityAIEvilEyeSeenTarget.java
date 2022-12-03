@@ -24,7 +24,7 @@ public class EntityAIEvilEyeSeenTarget extends EntityAITarget {
     }
     @Override
     public boolean shouldExecute() {
-        System.out.println("Evi Eye AI");
+        //System.out.println("Evi Eye AI");
         List<Entity> list=this.taskOwner.world.getEntitiesWithinAABB(EntityLivingBase.class, this.getTargetableArea(getTargetDistance()), new Predicate<Entity>() {
             @Override
             public boolean apply(@Nullable Entity input) {
@@ -43,13 +43,13 @@ public class EntityAIEvilEyeSeenTarget extends EntityAITarget {
             return false;
         Collections.sort(list,new EntityAINearestAttackableTarget.Sorter(this.taskOwner));
         this.targetEntity=(EntityLivingBase) list.get(0);
-        System.out.println(targetEntity);
+        //System.out.println(targetEntity);
         return true;
     }
 
     @Override
     public void startExecuting() {
-        System.out.println(targetEntity);
+        //System.out.println(targetEntity);
         this.taskOwner.setAttackTarget(targetEntity);
         super.startExecuting();
     }
