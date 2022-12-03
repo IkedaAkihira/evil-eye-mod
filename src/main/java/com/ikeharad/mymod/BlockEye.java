@@ -20,6 +20,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ITeleporter;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -86,6 +87,14 @@ public class BlockEye extends BlockHorizontal implements ITileEntityProvider{
     @Override
     public void breakBlock(World world,BlockPos blockPos,IBlockState state){
         super.breakBlock(world,blockPos,state);
+    }
+
+    @Override
+    public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player,
+            boolean willHarvest) {
+        if(player.dimension != MyMod.DIM_ID_EVIL_EYE)
+            player.changeDimension(MyMod.DIM_ID_EVIL_EYE,new CustomTeleporter());
+        return super.removedByPlayer(state, world, pos, player, willHarvest);
     }
 
     /*@Override
