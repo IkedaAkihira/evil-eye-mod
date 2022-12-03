@@ -30,13 +30,7 @@ public class ModBiomes
     {
         ForgeRegistries.BIOMES.register(evil_eye_biome);
         BiomeDictionary.addTypes(evil_eye_biome, 
-                BiomeDictionary.Type.HILLS,
-                BiomeDictionary.Type.MOUNTAIN,
-                BiomeDictionary.Type.DRY
+                BiomeDictionary.Type.PLAINS
                 );
-        BiomeManager.addBiome(BiomeType.WARM, new BiomeEntry(evil_eye_biome, 10000));
-        BiomeManager.addSpawnBiome(evil_eye_biome);
-        BiomeManager.addStrongholdBiome(evil_eye_biome);
-        BiomeManager.addVillageBiome(evil_eye_biome, true);
     }
 }
