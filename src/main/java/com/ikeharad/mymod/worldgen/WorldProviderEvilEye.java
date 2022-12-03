@@ -27,7 +27,7 @@ public class WorldProviderEvilEye extends WorldProvider{
 
     @Override
     public Vec3d getFogColor(float p_76562_1_, float p_76562_2_) {
-        return new Vec3d(0.5,0.7,0.7);
+        return new Vec3d(0.7,0.7,0.7);
     }
 
     @Override
@@ -67,6 +67,14 @@ public class WorldProviderEvilEye extends WorldProvider{
     @Override
     public float calculateCelestialAngle(long worldTime, float partialTicks)
     {
-        return 0.225F;
+        return 0.5F;
     }
+
+    ///*
+    @Override
+    public boolean isDaytime() {
+        return false;
+    }
+    /*
+    */
 }
