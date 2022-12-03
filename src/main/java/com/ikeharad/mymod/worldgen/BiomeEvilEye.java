@@ -2,6 +2,8 @@ package com.ikeharad.mymod.worldgen;
 
 import com.ikeharad.mymod.EntityEyeApostle;
 import com.ikeharad.mymod.MyMod;
+
+import net.minecraft.client.renderer.entity.layers.LayerSlimeGel;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeHell;
@@ -12,7 +14,7 @@ public class BiomeEvilEye extends Biome{
     public BiomeEvilEye() {
         super(new BiomeProperties(MyMod.NAME_EYE_BIOME)
             .setBaseHeight(0.0f)
-            .setHeightVariation(0.5f)
+            .setHeightVariation(0.1f)
             .setTemperature(0.3f)
             .setWaterColor(0)
             );
@@ -34,7 +36,7 @@ public class BiomeEvilEye extends Biome{
 
     @Override
     public BiomeDecorator createBiomeDecorator() {
-        return new BiomeHellDecorator();
+        return new BiomeEvilEyeDecorator();
     }
 
     
